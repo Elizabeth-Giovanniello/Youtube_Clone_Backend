@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
-    path('api/comments/', views.CommentsList),
+    path('api/comments/<str:video_id>/', views.get_all_comments), 
+    path('api/comments/', views.add_comment),
 ]

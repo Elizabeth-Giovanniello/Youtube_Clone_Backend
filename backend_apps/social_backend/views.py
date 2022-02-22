@@ -11,8 +11,8 @@ from django.contrib.auth.models import User
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_comments(request):
-  comments = Comment.objects.all()
+def get_all_comments(request, video_id):
+  comments = Comment.objects.filter(video_id = video_id)
   serializer = CommentSerializer(comments, many=True)
   return Response(serializer.data)
 
@@ -24,7 +24,7 @@ def get_all_comments(request):
 def add_comment(request):
   serializer = CommentSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save(user=request.user)
+    serializer.save(user_id=request.user)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

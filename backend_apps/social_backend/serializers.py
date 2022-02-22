@@ -27,8 +27,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class ReplySerializer(serializers.ModelSerializer):
   user = UserSerializer(many=False, read_only=True)
-  likes = LikeSerializer(many=True)
-  dislikes = DislikeSerializer(many=True)
+  likes = LikeSerializer(many=True, read_only=True)
+  dislikes = DislikeSerializer(many=True, read_only=True)
   class Meta:
     model = Reply
     fields = ['id','body', 'user_id', 'comment_id']
