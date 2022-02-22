@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'drf_jwt_backend.wsgi.application'
+WSGI_APPLICATION = 'social_backend.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -151,3 +151,5 @@ try:
     from social_backend.local_settings import *
 except ImportError:
     pass
+
+
