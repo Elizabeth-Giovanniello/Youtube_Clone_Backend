@@ -14,7 +14,7 @@ class LikeSerializer(serializers.ModelSerializer):
     
 class DislikeSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Like
+    model = Dislike
     fields = ['id', 'user_id', 'reply_id', 'comment_id']
 
 class CommentSerializer(serializers.ModelSerializer):
