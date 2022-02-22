@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = 'drf_jwt_backend.urls'
+ROOT_URLCONF = 'social_backend.urls'
 
 TEMPLATES = [
     {
