@@ -20,5 +20,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
-    path('api/comments/', views.CommentList.as_view()),
+    path('api/comments/', views.CommentsList),
 ]
