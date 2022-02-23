@@ -26,21 +26,18 @@ def add_comment(request):
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-#TODO: finish editing the below views
-
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_replies(request, comment_id):
-  comments = Comment.objects.filter(comment_id = comment_id)
-  serializer = CommentSerializer(comments, many=True)
+  replies = Reply.objects.filter(comment_id = comment_id)
+  serializer = ReplySerializer(replies, many=True)
   return Response(serializer.data)
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_reply(request):
-  serializer = CommentSerializer(data=request.data)
+  serializer = ReplySerializer(data=request.data)
   if serializer.is_valid():
     serializer.save(user_id=request.user)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
