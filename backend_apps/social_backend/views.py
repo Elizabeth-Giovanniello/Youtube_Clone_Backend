@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comment, Reply, Like, Dislike
-from .serializers import CommentSerializer, ReplySerializer, LikeSerializer, DislikeSerializer
+from .serializers import CommentSerializer, ReplySerializer
 from django.contrib.auth.models import User
 
 GET = 'GET'
@@ -18,6 +18,7 @@ DELETE = 'DELETE'
 @permission_classes([AllowAny])
 def get_all_comments(request, video_id):
   comments = Comment.objects.filter(video_id = video_id)
+  viscomments = {comment for comment in comments}
   serializer = CommentSerializer(comments, many=True)
   return Response(serializer.data)
 
