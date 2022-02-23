@@ -25,6 +25,7 @@ class Reply(Response, CommentBase):
 
 class ReplyID(models.Model):
     reply = models.ForeignKey(Reply, on_delete=models.CASCADE, blank=True, null=True)
+    
     class Meta:
         abstract = True
 
