@@ -26,4 +26,5 @@ urlpatterns = [
     path('replies/', views.add_reply),
     path('comments/<int:comment_id>/', views.edit_comment),
     path('replies/<int:reply_id>/', views.edit_reply),
+    path('api/comments/<int:comment_id>/like/', views.toggle_like),
 ]

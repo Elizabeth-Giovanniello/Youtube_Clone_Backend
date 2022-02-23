@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comment, Reply, Like, Dislike
-from .serializers import CommentSerializer, ReplySerializer
+from .serializers import CommentSerializer, LikeSerializer, ReplySerializer
 from django.contrib.auth.models import User
 
 GET = 'GET'
@@ -87,3 +87,33 @@ def edit_reply(request, reply_id):
       return Response(status=status.HTTP_204_NO_CONTENT)
   else:
     return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+#LIKES
+
+@api_view([PUT])
+@permission_classes([IsAuthenticated])
+def toggle_like(request, comment_id):
+  like = Like.objects.filter(comment=comment_id, user=request.user)
+  dislike = Dislike.objects.filter(comment=comment_id, user=request.user)
+  comment = Comment.objects.get(pk=comment_id)
+  response_status = None
+
+  if like:
+    like.delete()
+    response_status=status.HTTP_204_NO_CONTENT
+
+  else:
+    new_like = Like(comment = comment, user=request.user)
+    new_like.save()
+    response_status=status.HTTP_201_CREATED 
+
+    if dislike:
+      dislike.delete()
+  
+  serializer = CommentSerializer(comment)
+  return Response(serializer.data, response_status)
+
+
+
+
