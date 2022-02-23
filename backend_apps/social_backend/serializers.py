@@ -10,20 +10,20 @@ class UserSerializer(serializers.ModelSerializer):
 class LikeSerializer(serializers.ModelSerializer):
   class Meta:
     model = Like
-    fields = ['user_id']
+    fields = ['user']
     
 class DislikeSerializer(serializers.ModelSerializer):
   class Meta:
     model = Dislike
-    fields = ['user_id']
+    fields = ['user']
 
 class CommentSerializer(serializers.ModelSerializer):
-  user_id = UserSerializer(many=False, read_only=True)
+  user = UserSerializer(many=False, read_only=True)
   likes = LikeSerializer(many=True, read_only=True)
   dislikes = DislikeSerializer(many=True, read_only=True)
   class Meta:
     model = Comment
-    fields= ['user_id', 'likes', 'dislikes', 'body', 'id']
+    fields= ['user', 'likes', 'dislikes', 'body', 'id']
 
 class ReplySerializer(serializers.ModelSerializer):
   user = UserSerializer(many=False, read_only=True)

@@ -27,7 +27,7 @@ def get_all_comments(request, video_id):
 def add_comment(request):
   serializer = CommentSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save(user_id=request.user)
+    serializer.save(user=request.user)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -35,7 +35,7 @@ def add_comment(request):
 @permission_classes([IsAuthenticated])
 def edit_comment(request, comment_id):
   comment = Comment.objects.get(pk=comment_id)
-  if request.user.id == comment.user_id.id:
+  if request.user == comment.user:
     if request.method == PUT:
       serializer = CommentSerializer(comment, request.data)
       if serializer.is_valid():
@@ -65,6 +65,6 @@ def get_all_replies(request, comment_id):
 def add_reply(request):
   serializer = ReplySerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save(user_id=request.user)
+    serializer.save(user=request.user)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
