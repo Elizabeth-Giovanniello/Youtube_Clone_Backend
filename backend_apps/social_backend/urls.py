@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/comments/', views.add_comment),
     path('api/comments/<int:comment_id>/', views.get_all_replies), 
     path('replies/', views.add_reply),
-    path('comments/<int:comment_id>/', views.edit_comment)
+    path('comments/<int:comment_id>/', views.edit_comment),
+    path('replies/<int:reply_id>/', views.edit_reply),
 ]

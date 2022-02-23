@@ -31,4 +31,4 @@ class ReplySerializer(serializers.ModelSerializer):
   dislikes = DislikeSerializer(many=True, read_only=True)
   class Meta:
     model = Reply
-    fields = '__all__'
+    fields = ['user', 'likes', 'dislikes', 'body', 'id', 'comment']

@@ -68,3 +68,21 @@ def add_reply(request):
     serializer.save(user=request.user)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view([PUT, DELETE])
+@permission_classes([IsAuthenticated])
+def edit_reply(request, reply_id):
+  reply = Reply.objects.get(pk=reply_id)
+  if request.user == reply.user:
+    if request.method == PUT:
+      serializer = ReplySerializer(reply, request.data)
+      if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == DELETE:
+      reply.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+  else:
+    return Response(status=status.HTTP_401_UNAUTHORIZED)
