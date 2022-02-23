@@ -18,12 +18,12 @@ class DislikeSerializer(serializers.ModelSerializer):
     fields = ['user_id']
 
 class CommentSerializer(serializers.ModelSerializer):
-  user = UserSerializer(many=False, read_only=True)
+  user_id = UserSerializer(many=False, read_only=True)
   likes = LikeSerializer(many=True, read_only=True)
   dislikes = DislikeSerializer(many=True, read_only=True)
   class Meta:
     model = Comment
-    fields=  '__all__'
+    fields= ['user_id', 'likes', 'dislikes', 'body', 'id']
 
 class ReplySerializer(serializers.ModelSerializer):
   user = UserSerializer(many=False, read_only=True)

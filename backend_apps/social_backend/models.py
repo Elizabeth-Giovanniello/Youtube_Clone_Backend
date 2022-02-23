@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#fix user_id_id etc
+
 class Comment(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     video_id = models.CharField(max_length=500)
