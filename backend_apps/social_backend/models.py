@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class CommentBase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.CharField(max_length=500)
-    # timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         abstract = True
@@ -25,7 +25,7 @@ class Reply(Response, CommentBase):
 
 class ReplyID(models.Model):
     reply = models.ForeignKey(Reply, on_delete=models.CASCADE, blank=True, null=True)
-    
+
     class Meta:
         abstract = True
 

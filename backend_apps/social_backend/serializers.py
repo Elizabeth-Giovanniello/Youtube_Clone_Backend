@@ -39,7 +39,7 @@ class CommentSerializer(ResponseSerializer):
 
   class Meta:
     model = Comment
-    fields= ['user', 'likes', 'dislikes', 'body', 'id']
+    fields = ['id', 'body', 'timestamp', 'user', 'likes', 'dislikes']
 
 
 
@@ -47,7 +47,7 @@ class ReplySerializer(ResponseSerializer):
 
   class Meta:
     model = Reply
-    fields = ['user', 'likes', 'dislikes', 'body', 'id', 'comment']
+    fields = ['id', 'body', 'timestamp', 'user', 'comment', 'likes', 'dislikes']
 
   def get_likes(self, response):
     likes = Like.objects.filter(reply=response)
