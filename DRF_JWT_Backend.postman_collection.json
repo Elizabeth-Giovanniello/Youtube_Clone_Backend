@@ -449,6 +449,95 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "YouTube_API",
+			"item": [
+				{
+					"name": "Get_Videos_By_Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8cFVUj549w8bE1YXcEeSGCP0MxAKxrcs&type=video&q=stuff&part=snippet",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "AIzaSyB8cFVUj549w8bE1YXcEeSGCP0MxAKxrcs"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "q",
+									"value": "stuff"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Related_Videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?relatedToVideoId=nhDAmqYHxdA&type=video&q=stuff&part=snippet&key=AIzaSyB8cFVUj549w8bE1YXcEeSGCP0MxAKxrcs",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "relatedToVideoId",
+									"value": "nhDAmqYHxdA"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "q",
+									"value": "stuff"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyB8cFVUj549w8bE1YXcEeSGCP0MxAKxrcs"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
