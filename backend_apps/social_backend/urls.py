@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('api/<str:video_id>/', views.get_all_comments), 
-    path('api/comments/', views.add_comment),
+    path('comments/', views.add_comment),
     path('api/comments/<int:comment_id>/', views.get_all_replies), 
     path('replies/', views.add_reply),
     path('comments/<int:comment_id>/', views.edit_comment),

@@ -39,7 +39,7 @@ class CommentSerializer(ResponseSerializer):
 
   class Meta:
     model = Comment
-    fields = ['id', 'body', 'timestamp', 'user', 'likes', 'dislikes']
+    fields = ['id', 'body', 'timestamp', 'user', 'likes', 'dislikes', 'video_id']
 
 
 

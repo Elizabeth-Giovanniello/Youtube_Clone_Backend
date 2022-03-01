@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
+DRF_JWT_Backend.postman_collection.json
