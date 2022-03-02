@@ -20,7 +20,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('authentication.urls')),
-    path('<str:video_id>/', views.get_all_comments), 
+    path('get_comments/<str:video_id>/', views.get_all_comments), 
     path('add_comment/', views.add_comment),
     path('view_replies/<int:comment_id>/', views.get_all_replies), 
     path('add_reply/', views.add_reply),
