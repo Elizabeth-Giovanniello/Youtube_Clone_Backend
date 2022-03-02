@@ -19,13 +19,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/', include('authentication.urls')),
-    path('api/<str:video_id>/', views.get_all_comments), 
+    path('auth/', include('authentication.urls')),
+    path('<str:video_id>/', views.get_all_comments), 
     path('comments/', views.add_comment),
-    path('api/comments/<int:comment_id>/', views.get_all_replies), 
+    path('comments/<int:comment_id>/', views.get_all_replies), 
     path('replies/', views.add_reply),
     path('comments/<int:comment_id>/', views.edit_comment),
     path('replies/<int:reply_id>/', views.edit_reply),
-    path('api/<str:type>/<int:response_id>/like/', views.toggle_like),
-    path('api/<str:type>/<int:response_id>/dislike/', views.toggle_dislike),
+    path('<str:type>/<int:response_id>/like/', views.toggle_like),
+    path('<str:type>/<int:response_id>/dislike/', views.toggle_dislike),
 ]
