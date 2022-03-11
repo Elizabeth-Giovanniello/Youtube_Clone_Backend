@@ -153,4 +153,15 @@ try:
 except ImportError:
     pass
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'db',
+        'USER': 'root',
+        'PASSWORD': 'example',
+        'HOST': 'db',
+        'OPTIONS': {
+            'autocommit': True
+        }
+    }
+}

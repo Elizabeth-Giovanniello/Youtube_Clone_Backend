@@ -13,6 +13,6 @@ RUN pip install -r requirements.txt
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["python", "backend_apps/manage.py", "runserver"]

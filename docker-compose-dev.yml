@@ -1,10 +1,25 @@
 version: '3.9'
 
 services:
+  db:
+    container_name: db
+    restart: unless-stopped
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: db
+    command: --default-authentication-plugin=mysql_native_password
   build:
     container_name: backend-dev
     build:
       context: ./
       dockerfile: Dockerfile.dev
     ports:
-      - '8001:8000'
+      - '8001:8080'
+    depends_on:
+      - db
+  adminer:
+    container_name: adminer
+    image: adminer
+    ports:
+      - '8085:8080'
