@@ -15,4 +15,4 @@ USER appuser
 
 EXPOSE 8080
 
-CMD ["python", "backend_apps/manage.py", "runserver"]
+CMD ["python", "backend_apps/manage.py", "runserver", "0.0.0.0:8080"]
